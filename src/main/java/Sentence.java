@@ -1,9 +1,9 @@
 /**
  * Представляє речення як масив об'єктів {@link Word} та символів пунктуації/пробілів.
  *
- * <p>Речення моделюється як послідовність токенів, де кожен токен є або
- * {@link Word} (алфавітні літери), або одиничним {@link Letter}, що слугує
- * роздільником або знаком пунктуації (пробіл, кома, крапка тощо).</p>
+ * Речення моделюється як послідовність токенів, де кожен токен є або
+ * {@link Word}, або одиничним {@link Letter}, що слугує
+ * роздільником або знаком пунктуації.
  */
 public class Sentence {
 
@@ -59,23 +59,19 @@ public class Sentence {
      * @return масив токенів
      */
     private Token[] parseSentence(String raw) {
-        // Normalize: replace tabs/multiple spaces with a single space
         String normalized = raw.replaceAll("[ \\t]+", " ");
 
-        // First pass: count tokens
         java.util.List<Token> list = new java.util.ArrayList<>();
         int i = 0;
         while (i < normalized.length()) {
             char ch = normalized.charAt(i);
             if (Character.isLetter(ch)) {
-                // Collect the whole word
                 int start = i;
                 while (i < normalized.length() && Character.isLetter(normalized.charAt(i))) {
                     i++;
                 }
                 list.add(new Token(new Word(normalized.substring(start, i))));
             } else {
-                // Single separator / punctuation / space
                 list.add(new Token(new Letter(ch)));
                 i++;
             }
