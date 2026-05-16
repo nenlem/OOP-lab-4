@@ -46,7 +46,6 @@ class WordTest {
         Word word = new Word("cat");
         Letter[] copy = word.getLetters();
         copy[0] = new Letter('X');
-        // Original should be unchanged
         assertEquals('c', word.getLetter(0).getValue());
     }
 

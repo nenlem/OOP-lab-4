@@ -7,8 +7,6 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 class TextModifierIntegrationTest {
 
-    // ── Full-pipeline replacement ────────────────────────────────────────────
-
     @Test
     void fullPipeline_labAssignmentExample() {
         Text text = new Text(
@@ -82,9 +80,7 @@ class TextModifierIntegrationTest {
         text.replaceWordsOfLength(4, "X");
         assertEquals("X enjoy X.", text.toString());
     }
-
-    // ── Exception validation ─────────────────────────────────────────────────
-
+    
     @Test
     void replaceWordsOfLength_zeroSearchLength_throwsException() {
         Text text = new Text("Hello world.");
